@@ -1,5 +1,55 @@
 # Using Git and Github
 
+## TL;DR
+
+1. To clone a repository
+```bash
+$ git clone <LINK TO REPO>
+```
+Example:
+```bash
+$ git clone git@github.com:team-IRJZ/IRJZ_Project.git
+```
+2. To list branches
+```bash
+$ git branch
+```
+3. To checkout and create a new branch
+```bash
+$ git checkout -b <NAME OF BRANCH>
+```
+4. To switch to an existing branch
+```bash
+$ git checkout <NAME OF BRANCH>
+```
+5. To see changes on your local branch
+```bash
+$ git status
+```
+6. To stage a change that was made 
+```bash
+$ git add <NAME OF FILE(S) TO ADD>
+```
+7. To commit changes to the current branch
+```bash
+$ git commit -m '<MY COMMIT MESSAGE>'
+```
+8. To push changes to the remote repository (e.g. Github)
+```bash
+$ git push origin <NAME OF BRANCH>
+```
+9. To pull down latest version of a branch from the remote repository
+```bash
+$ git pull 
+```
+10. To merge changes into a branch (in this example, I am on a new branch and I'm bringing in changes that were commited to the `main` branch
+```bash
+$ git merge main
+```
+
+
+## Intro
+
 An important part of a software development project is for the team to have a source control process. This helps ensure that any new changes to the code won't break what is already working, and that if something breaks, the code can be reverted to a previous state. The following is a simple workflow with Git and Github that should work for this project. The steps might be a little strange at first, but after going through them a few times it will feel more automatic. If there are any questions or if something is not working, feel free to message me on Slack.
 
 Note that I'm testing out all of these instructions on a Mac. If you're using Windows and something doesn't seem right, let me know and I can help troubleshoot.
@@ -105,6 +155,7 @@ Typically, development teams have policies to ensure that any changes are tested
 To alert my team that I've pushed a new branch, I'll submit a _pull request_. 
 
 1. In Github, In the nav menu, click __Pull requests__. 
+t
 1. Click the __New pull request__ button.
 1. In the two branch selectors, select __base: main__ and __compare: NAME OF YOUR FEATURE BRANCH__.
 1. You can write a message letting the rest of the team know about the change and anything they need to do to test it.
@@ -147,5 +198,4 @@ Once a file gets commited to a repository, it is hard to take it out of the comm
 
 
 The above should be enough for this project. After going through the steps a few times, it should become automatic. Please let me know on Slack or at any meetings if there are questions or issues that come up.
-
 
