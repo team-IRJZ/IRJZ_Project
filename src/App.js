@@ -1,25 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
+import { getUsers } from './FirebaseService';
+import { getUsersFromAxios } from './AxiosService';
 import './App.css';
 
+const getUsersFromFirebaseService = () => {
+    getUsers().then(users =>{
+        console.log('Users from SDK:\n', users);
+    });
+}
+
+const getUsersFromAxiosService = () => {
+    getUsersFromAxios().then(users => {
+        console.log('Users from Axios:\n', users);
+    });
+};
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  return(
+      <div className="App">
+        <header className="button-header">
+            <button onClick={getUsersFromFirebaseService}>
+                Get users using SDK
+            </button>
+            <button onClick={getUsersFromAxiosService}>
+                Get users using Axios
+            </button>
+        </header>
+      </div>
   );
 }
 
