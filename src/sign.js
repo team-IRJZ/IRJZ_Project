@@ -4,6 +4,7 @@ import { getFirebase } from './firebaseConfig';
 import firebase from "firebase"
 
 const sig = () => {
+  getFirebase();
   console.log('Users from gmail:\n');
   var provider = new firebase.auth.GoogleAuthProvider();
   getFirebase().auth().signInWithRedirect(provider);
