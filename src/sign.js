@@ -5,13 +5,15 @@ import firebase from "firebase"
 
 const sig = () => {
   getFirebase();
-  console.log('Users from gmail:\n');
-  var provider = new firebase.auth.GoogleAuthProvider();
-  getFirebase().auth().signInWithRedirect(provider);
 
-  firebase.auth().getRedirectResult().then(function(result) {
+  var provider = new firebase.auth.GoogleAuthProvider();
+  getFirebase().auth().signInWithPopup(provider).then(function(result){
+    console.log(result);
+  })
+
+
+  /*firebase.auth().getRedirectResult().then(function(result) {
   if (result.credential) {
-    console.log('Users from gmail:\n');
     var a = firebase.auth();
     a.signInWithCredential(result.credential)
     // This gives you a Google Access Token. You can use it to access the Google API.
@@ -29,14 +31,11 @@ const sig = () => {
   // The firebase.auth.AuthCredential type that was used.
   var credential = error.credential;
   // ...
-});
+});*/
 }
 
 class Sign extends Component{
-  sig(){
-    var provider = new firebase.auth.GoogleAuthProvider();
-    getFirebase().auth().signInWithRedirect(provider);
-  }
+
   render(){
     return(
       <div className = "container">
