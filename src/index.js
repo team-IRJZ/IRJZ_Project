@@ -2,10 +2,32 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Sign from './sign';
-
+import Options from './options'
+import Categorize from './categorize'
+import { getFirebase } from './firebaseConfig';
 import * as serviceWorker from './serviceWorker';
 
 class App extends React.Component {
+
+  constructor(props){
+    super(props);
+    this.state = {user:null,};
+  }
+
+  //this.authListener = this.authListener.bind(this);
+  componentDidMount(){
+    this.authListener();
+  }
+  authListener(){
+    getFirebase().auth().onAuthStateChanged((user) => {
+      if(user){
+        console.log(user);
+         this.setState({user});
+      }else{
+        this.setState({user:null});
+      }
+    })
+  }
   render() {
     return (
       <div>
@@ -13,12 +35,9 @@ class App extends React.Component {
         <h2>CL_UNK</h2>
       </div>
 
-        <Sign />
+        {this.state.user ? (<Options/>) : (<Sign/>)}
 
       </div>
-
-
-
     )
   }
 }
