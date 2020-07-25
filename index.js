@@ -1,6 +1,6 @@
 const fs = require('fs');
 const readline = require('readline');
-const {google} = require('googleapis');
+const {google} = require('googleapis'); //add to node
 
 // If modifying these scopes, delete token.json.
 //const SCOPES = ['https://www.googleapis.com/auth/gmail.modify'];
@@ -27,7 +27,7 @@ function authorize(credentials, callback) {
   const {client_secret, client_id, redirect_uris} = credentials.installed;
   const oAuth2Client = new google.auth.OAuth2(
       client_id, client_secret, redirect_uris[0]);
-      //  const messages = await listMessages(oAuth2Client, 'label:inbox subject:reminder'); //a
+  const messages = await listMessages(oAuth2Client, 'label:inbox subject:reminder');
 
 
   // Checks if we have previously stored a token.
@@ -72,6 +72,7 @@ getFilterList = (fileName) => {
   }
   return filteringList;
 };
+
 // //batch delete from api
 // function deleteMessage(userId, messageId) {
 //   const gmail = google.gmail({ version: "v1", auth });
@@ -80,6 +81,8 @@ getFilterList = (fileName) => {
 //     resource: { ids: list },
 //   });
 // }
+//add async
+
 
 // creating Labels
 function modifyLabels(auth, messageId, addLabelIds, removeLabelIds) {
