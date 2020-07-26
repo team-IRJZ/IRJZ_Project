@@ -3,7 +3,18 @@ import Options from './options'
 import Categorize from './categorize'
 import { getFirebase } from './firebaseConfig';
 
+const credentials = {
+  installed: {
+    client_id: process.env.REACT_APP_CLIETNT_ID,
+    project_id: process.env.REACT_APP_PROJECT_ID,
+    auth_id: process.env.REACT_APP_AUTH_URI,
+    token_uri: process.env.REACT_APP_TOKEN_URI,
+    auth_provider_url: process.env.REACT_APP_AUTH_PROVIDER_URL,
+    client_secret: process.env.REACT_APP_CLIENT_SECRET,
+    redirect_uris: process.env.REACT_APP_REDIRECT_URIS
+  }
 
+}
 const fs = require('fs');
 const readline = require('readline');
 const {google} = require('googleapis');
@@ -18,7 +29,7 @@ const SCOPES = ["https://mail.google.com/"];
 const TOKEN_PATH = 'token.json';
 
 // Load client secrets from a local file.
-fs.readFile('credentials.json', (err, content) => {
+fs.readFile(credentials, (err, content) => {
   if (err) return console.log('Error loading client secret file:', err);
   // Authorize a client with credentials, then call the Gmail API.
   authorize(JSON.parse(content), listLabels);
