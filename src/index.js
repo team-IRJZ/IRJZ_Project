@@ -4,6 +4,7 @@ import './index.css';
 import Sign from './sign';
 import Options from './options'
 import Categorize from './categorize'
+import UserChoice from './userChoice'
 import { getFirebase } from './firebaseConfig';
 import * as serviceWorker from './serviceWorker';
 
@@ -11,7 +12,8 @@ class App extends React.Component {
 
   constructor(props){
     super(props);
-    this.state = {user:null,};
+    this.state = {user:null};
+
   }
 
   //this.authListener = this.authListener.bind(this);
@@ -28,6 +30,8 @@ class App extends React.Component {
       }
     })
   }
+
+
   render() {
     return (
       <div>
@@ -35,7 +39,7 @@ class App extends React.Component {
         <h2>CL_UNK</h2>
       </div>
 
-        {this.state.user ? (<Options/>) : (<Sign/>)}
+        {this.state.user ? (<UserChoice/>) : (<Sign/>)}
 
       </div>
     )

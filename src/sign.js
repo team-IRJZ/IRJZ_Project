@@ -8,7 +8,7 @@ const sig = () => {
 
   var provider = new firebase.auth.GoogleAuthProvider();
   getFirebase().auth().signInWithPopup(provider).then(function(result){
-    console.log(result);
+    //console.log(result);
   })
 
 
