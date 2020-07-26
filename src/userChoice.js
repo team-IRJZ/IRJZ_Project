@@ -7,6 +7,7 @@ import { getFirebase } from './firebaseConfig';
 const fs = require('fs');
 const readline = require('readline');
 const {google} = require('googleapis');
+const lineByLine = require("n-readlines");
 
 // If modifying these scopes, delete token.json.
 //const SCOPES = ['https://www.googleapis.com/auth/gmail.modify'];
@@ -69,8 +70,9 @@ function listMessages(auth, query) {
 
 
 //getfilter list
+
 // reads filters and gets the eamils according to the filters
-getFilterList = (fileName) => {
+const getFilterList = (fileName) => {
   const filteringList = [];
   const liner = new lineByLine(fileName);
   while ((line = liner.next())) {
