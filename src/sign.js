@@ -7,6 +7,7 @@ const sig = () => {
   getFirebase();
 
   var provider = new firebase.auth.GoogleAuthProvider();
+  provider.addScope('https://www.googleapis.com/auth/gmail.readonly');
   getFirebase().auth().signInWithPopup(provider).then(function(result){
     //console.log(result);
   })
