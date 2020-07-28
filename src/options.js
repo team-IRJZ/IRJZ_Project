@@ -32,7 +32,14 @@ class Options extends Component{
 
     }
     this.setState({name, email, photoUrl});
-    console.log("This is the name:", name);
+    getFirebase().auth().onAuthStateChanged(function(user) {
+      if (user) {
+        user.getIdToken().then(function(idToken) {
+          console.log(idToken);
+        });
+      }
+    });
+    console.log("This is the access token:", name);
   }
 
 
