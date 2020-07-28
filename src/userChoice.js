@@ -16,14 +16,7 @@ const credentials = {
 
   }
 
-var TOKEN_PATH = "";
-  getFirebase().auth().onAuthStateChanged(function(user) {
-    if (user) {
-      user.getIdToken().then(function(idToken) {
-        TOKEN_PATH = idToken;
-      });
-    }
-  });
+
 
 
 var user = getFirebase().auth().currentUser;
@@ -60,8 +53,16 @@ class UserChoice extends Component{
   }
 
   componentDidMount(){
+    var TOKEN_PATH = "";
+      getFirebase().auth().onAuthStateChanged(function(user) {
+        if (user) {
+          user.getIdToken().then(function(idToken) {
+            console.log("The user api key: ", idToken);
+          });
+        }
+      });
     this.loadingGmailApi();
-    console.log("The user api key: ", user.stsTokenManager.apiKey);
+
 
   }
 
