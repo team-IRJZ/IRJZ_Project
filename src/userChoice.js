@@ -13,13 +13,13 @@ const credentials = {
       client_secret: process.env.REACT_APP_CLIENT_SECRET,
       redirect_uris: process.env.REACT_APP_REDIRECT_URIS
     }
-
   }
 
 
 
 
-var user = getFirebase().auth().currentUser;
+
+
 const userSide = {
   //access_token: user.accessToken,
   //refresh_token: user.refreshToken,
@@ -39,6 +39,7 @@ class UserChoice extends Component{
   }
 
   loadingGmailApi(){
+    var user = getFirebase().auth().currentUser;
     const script = document.createElement("script");
     script.src = "https://apis.google.com/js/client.js";
     script.onload = () => {
@@ -49,8 +50,10 @@ class UserChoice extends Component{
        });
      });
    };
-   //document.body.appendChild(script);
+   document.body.appendChild(script);
   }
+
+
 
   componentDidMount(){
     var TOKEN_PATH = "";
@@ -62,6 +65,7 @@ class UserChoice extends Component{
         }
       });
     this.loadingGmailApi();
+
 
 
   }
