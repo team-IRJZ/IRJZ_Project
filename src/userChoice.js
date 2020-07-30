@@ -16,11 +16,7 @@ const credentials = {
   }
 
 
-
-
-
-
-const userSide = {
+const userSide ={
   //access_token: user.accessToken,
   //refresh_token: user.refreshToken,
   //api_key: user.apiKey,
@@ -86,9 +82,7 @@ class UserChoice extends Component{
   });
   getPageOfMessages(initialRequest, []);
 
-
   }
-
 
   click(){
     this.setState({c: !this.state.c});
@@ -99,8 +93,6 @@ class UserChoice extends Component{
       <div onClick = {this.click} id = "container">
         {this.state.c ? <Categorize/> : <Options/>}
       </div>
-
-
     )
   }
 }
