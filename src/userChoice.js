@@ -56,11 +56,11 @@ class UserChoice extends Component{
 
 
   componentDidMount(){
-    var user = getFirebase().auth().currentUser;
+    var client = getFirebase().auth().currentUser;
     var TOKEN_PATH = "";
       getFirebase().auth().onAuthStateChanged(function(user) {
-        if (user) {
-          user.getIdToken().then(function(idToken) {
+        if (client) {
+          client.getIdToken().then(function(idToken) {
             console.log("The user api key: ", idToken);
           });
         }
@@ -73,7 +73,7 @@ class UserChoice extends Component{
       var nextPageToken = resp.nextPageToken;
       if (nextPageToken) {
         request = window.gapi.client.gmail.users.messages.list({
-          'userId': user.email,
+          'userId': client.email,
           'pageToken': nextPageToken,
         });
         getPageOfMessages(request, result);
@@ -81,7 +81,7 @@ class UserChoice extends Component{
     });
   };
   var initialRequest = window.gapi.client.gmail.users.messages.list({
-    'userId': user.email,
+    'client': client.email,
 
   });
   getPageOfMessages(initialRequest, []);

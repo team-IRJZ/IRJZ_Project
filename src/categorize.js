@@ -19,13 +19,13 @@ class Categorize extends Component{
   }
 
   componentDidMount(){
-    var user = getFirebase().auth().currentUser;
+    var client = getFirebase().auth().currentUser;
     var name, email, photoUrl;
 
-    if (user != null) {
-      name = user.displayName;
-      email = user.email;
-      photoUrl = user.photoURL;
+    if (client != null) {
+      name = client.displayName;
+      email = client.email;
+      photoUrl = client.photoURL;
       //emailVerified = user.emailVerified;
       //uid = user.uid;  // The user's ID, unique to the Firebase project. Do NOT use
                        // this value to authenticate with your backend server, if

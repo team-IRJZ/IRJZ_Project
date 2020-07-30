@@ -8,6 +8,7 @@ import UserChoice from './userChoice'
 import { getFirebase } from './firebaseConfig';
 import * as serviceWorker from './serviceWorker';
 
+
 class App extends React.Component {
 
   constructor(props){
@@ -21,12 +22,12 @@ class App extends React.Component {
     this.authListener();
   }
   authListener(){
-    getFirebase().auth().onAuthStateChanged((user) => {
-      if(user){
-        console.log(user);
-         this.setState({user});
+    getFirebase().auth().onAuthStateChanged((client) => {
+      if(client){
+        console.log(client);
+         this.setState({client});
       }else{
-        this.setState({user:null});
+        this.setState({client:null});
       }
     })
   }
@@ -45,6 +46,8 @@ class App extends React.Component {
     )
   }
 }
+
+
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

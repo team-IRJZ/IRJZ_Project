@@ -19,22 +19,22 @@ class Options extends Component{
   }
 
   componentDidMount(){
-    var user = getFirebase().auth().currentUser;
+    var client = getFirebase().auth().currentUser;
     var name, email, photoUrl, uid, emailVerified;
 
-    if (user != null) {
-      name = user.displayName;
-      email = user.email;
-      photoUrl = user.photoURL;
-      emailVerified = user.emailVerified;
-      uid = user.uid;  // The user's ID, unique to the Firebase project. Do NOT use
+    if (client != null) {
+      name = client.displayName;
+      email = client.email;
+      photoUrl = client.photoURL;
+      emailVerified = client.emailVerified;
+      uid = client.uid;  // The user's ID, unique to the Firebase project. Do NOT use
                        // this value to authenticate with your backend server, if
 
     }
     this.setState({name, email, photoUrl});
-    getFirebase().auth().onAuthStateChanged(function(user) {
-      if (user) {
-        user.getIdToken().then(function(idToken) {
+    getFirebase().auth().onAuthStateChanged(function(client) {
+      if (client) {
+        client.getIdToken().then(function(idToken) {
           console.log(idToken);
         });
       }
